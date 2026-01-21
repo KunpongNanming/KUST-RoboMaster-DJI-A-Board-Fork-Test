@@ -1,0 +1,11 @@
+../User_Architect/Src/user_ring_buffe.c:11:6:RBuffer_AddReadIndex	16	static
+../User_Architect/Src/user_ring_buffe.c:22:9:RBuffer_Read	16	static
+../User_Architect/Src/user_ring_buffe.c:34:10:RBuffer_GetDis	16	static
+../User_Architect/Src/user_ring_buffe.c:46:10:RBuffer_GetLength	16	static
+../User_Architect/Src/user_ring_buffe.c:58:10:RBuffer_GetRemain	16	static
+../User_Architect/Src/user_ring_buffe.c:70:10:RBuffer_Put	32	static
+../User_Architect/Src/user_ring_buffe.c:98:10:RBuffer_GetWithHT	72	static
+../User_Architect/Src/user_ring_buffe.c:138:10:RBuffer_GetWithHLen	40	static
+../User_Architect/Src/user_ring_buffe.c:170:10:RBuffer_GetWithLen	32	static
+../User_Architect/Src/user_ring_buffe.c:194:10:RBuffer_GetWithH	64	static
+../User_Architect/Src/user_ring_buffe.c:233:10:RBuffer_GetWithT	56	static

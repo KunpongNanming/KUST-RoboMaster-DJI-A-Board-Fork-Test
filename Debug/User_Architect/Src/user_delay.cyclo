@@ -1,0 +1,4 @@
+../User_Architect/Src/user_delay.c:8:6:delay_init	1
+../User_Architect/Src/user_delay.c:13:6:delay_us	4
+../User_Architect/Src/user_delay.c:38:6:delay_ms	5
+../User_Architect/Src/user_delay.c:64:6:delay_s	5
