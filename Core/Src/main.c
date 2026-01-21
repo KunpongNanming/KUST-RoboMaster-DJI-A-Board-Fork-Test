@@ -111,34 +111,8 @@ int main(void)
   MX_TIM14_Init();
   MX_CAN2_Init();
   /* USER CODE BEGIN 2 */
-  UART_Init(&user_debug_uart, &huart6, user_debug_uart_callback);
-
-  DBUS_Init(&user_dbus_DR16, &huart1);
-
   LED_Init(&red_led, LED_RED_GPIO_Port, LED_RED_Pin, 1);
   LED_Init(&green_led, LED_GREEN_GPIO_Port, LED_GREEN_Pin, 1);
-
-  CAN_Init(&user_can_1, &hcan1, user_can_1_callback);
-  CAN_Init(&user_can_2, &hcan2, user_can_2_callback);
-
-  DJI_Motor_Init(&FR_GM6020, &user_can_1, 5, GM6020, Rotor_angle, 32.0f , 0.0f, 170.0f, 16000, 0);
-  DJI_Motor_Init(&FL_GM6020, &user_can_1, 3, GM6020, Rotor_angle, 32.0f , 0.0f, 170.0f, 16000, 0);
-  DJI_Motor_Init(&RR_GM6020, &user_can_1, 2, GM6020, Rotor_angle, 32.0f , 0.0f, 170.0f, 16000, 0);
-  DJI_Motor_Init(&RL_GM6020, &user_can_1, 4, GM6020, Rotor_angle, 32.0f , 0.0f, 170.0f, 16000, 0);
-
-  DJI_Motor_Init(&FR_M3508, &user_can_1, 1, M3508_gear, Rotor_speed, 3.0f , 0.0f, 3.0f, 6000, 0);
-  DJI_Motor_Init(&FL_M3508, &user_can_1, 3, M3508_gear, Rotor_speed, 3.0f , 0.0f, 3.0f, 6000, 0);
-  DJI_Motor_Init(&RR_M3508, &user_can_1, 2, M3508_gear, Rotor_speed, 3.0f , 0.0f, 3.0f, 6000, 0);
-  DJI_Motor_Init(&RL_M3508, &user_can_1, 4, M3508_gear, Rotor_speed, 3.0f , 0.0f, 3.0f, 6000, 0);
-
-  DJI_Motor_Init(&YAW_GM6020, &user_can_1, 1, GM6020, Rotor_angle, 7.0f , 0.0f, 130.0f, 16000, 0);
-
-  SwerveChassis_Init(&user_swerve_chassis, 0.430835f, 0.114f / 2, 15.764705882f,
-     &FL_M3508, &FR_M3508, &RL_M3508, &RR_M3508,
-     &FL_GM6020, &FR_GM6020, &RL_GM6020, &RR_GM6020,
-     240.0f,180.0f,150.0f,240.0f,
-     -1,-1,-1,-1);
-
 
   /* USER CODE END 2 */
 

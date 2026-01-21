@@ -53,8 +53,6 @@
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-float orientation_angle = 0.0f;
-
 
 /* USER CODE END 0 */
 
@@ -193,24 +191,6 @@ void SysTick_Handler(void)
 {
   /* USER CODE BEGIN SysTick_IRQn 0 */
 
-
-  const float vx = can_connection.ch3;
-  const float vy = can_connection.ch2;
-
-  SwerveChassis_InverseKinematics(&user_swerve_chassis);
-  orientation_angle = Math_WrapAngleDeg(orientation_angle + user_swerve_chassis.omega_current * 0.12975f + (float)can_connection.ch0 * 0.001f);
-
-  const CartesianCoord_Point input_vector = {0.007f * vx, 0.007f * vy, 0};
-  CartesianCoord_Point move_vector = {0};
-  RotateZ_Cartesian(&input_vector, -orientation_angle, &move_vector);
-
-  SwerveChassis_Kinematics(&user_swerve_chassis, move_vector.x, move_vector.y, 1.5f);
-  // SwerveChassis_Kinematics(&user_swerve_chassis, move_vector.x, move_vector.y, 0.07f * (float)can_connection.ch0);
-  SwerveChassis_Execute(&user_swerve_chassis);
-
-  DJI_Motor_Target(&YAW_GM6020, (Math_WrapAngleDeg(orientation_angle + 230.0f) + 180.0f) / 360.0f * 8191);
-  DJI_Motor_Execute(&user_can_1);
-
   /* USER CODE END SysTick_IRQn 0 */
   HAL_IncTick();
   /* USER CODE BEGIN SysTick_IRQn 1 */
@@ -245,7 +225,7 @@ void CAN1_RX0_IRQHandler(void)
 void USART1_IRQHandler(void)
 {
   /* USER CODE BEGIN USART1_IRQn 0 */
-  DBUS_receive_handler(&huart1);
+
   /* USER CODE END USART1_IRQn 0 */
   HAL_UART_IRQHandler(&huart1);
   /* USER CODE BEGIN USART1_IRQn 1 */

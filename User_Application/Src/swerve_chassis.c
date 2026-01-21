@@ -32,7 +32,7 @@ void SwerveChassis_Init(SwerveChassisState* chassis, const float wheelbase_radiu
     DJI_MOTOR_DRIVES* fl_wheel,  DJI_MOTOR_DRIVES* fr_wheel,  DJI_MOTOR_DRIVES* rl_wheel,  DJI_MOTOR_DRIVES* rr_wheel,
     DJI_MOTOR_DRIVES* fl_steer,  DJI_MOTOR_DRIVES* fr_steer,  DJI_MOTOR_DRIVES* rl_steer,  DJI_MOTOR_DRIVES* rr_steer,
     const float fl_steer_offset, const float fr_steer_offset, const float rl_steer_offset, const float rr_steer_offset,
-    const int8_t fl_reverse,     const int8_t fr_reverse,    const int8_t rl_reverse,      const int8_t rr_reverse) {
+    const int8_t fl_reverse,     const int8_t fr_reverse,     const int8_t rl_reverse,     const int8_t rr_reverse) {
 
     chassis->vx_target = 0.0f;
     chassis->vy_target = 0.0f;
