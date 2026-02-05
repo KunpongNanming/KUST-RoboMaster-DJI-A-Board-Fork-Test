@@ -1,6 +1,7 @@
 /* 包含头文件 ----------------------------------------------------------------*/
 #include "../Inc/user_can.h"
 #include "../../Core/Inc/bsp.h"
+
 /* 私有变量 ------------------------------------------------------------------*/
 static CAN_DRIVES *can_drives[CAN_NUM];
 static uint8_t can_num = 0;
@@ -9,7 +10,7 @@ static uint8_t can_num = 0;
 
 /**
 * @brief 初始化 CAN 总线
-* @param user_can 用户自定义的 CAN 总线结构体的指针
+* @param user_can CAN 总线驱动结构体指针
 * @param hcan     硬件句柄
 * @param callback 用户自定义的 can 总线消息接收回调函数
 */
@@ -42,7 +43,7 @@ void CAN_Init(CAN_DRIVES* user_can, CAN_HandleTypeDef* hcan, const CAN_Callback 
 
 /**
 * @brief 发送消息
-* @param user_can 用户自定义的 CAN 总线结构体的指针
+* @param user_can CAN 总线驱动结构体指针
 * @param id       报文标准标识符
 * @param data     报文数据
 * @param len      报文数据长度
@@ -69,7 +70,7 @@ void CAN_Send(const CAN_DRIVES* user_can, const uint32_t id, const uint8_t *data
 /* 覆写中断回调函数 -----------------------------------------------------------*/
 void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *hcan) {
     for (uint8_t can_index = 0 ; can_index < can_num ; can_index++) {
-        CAN_DRIVES *can_drive = can_drives[can_index];
+        CAN_DRIVES* can_drive = can_drives[can_index];
         if (hcan == can_drive->hcan) {
             CAN_RxHeaderTypeDef RxHeader;
 

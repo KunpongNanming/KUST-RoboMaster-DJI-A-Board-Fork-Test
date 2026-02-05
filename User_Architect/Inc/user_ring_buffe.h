@@ -5,27 +5,25 @@
 #include <stdint.h>
 #include <string.h>
 
-/* 类型定义 ------------------------------------------------------------------*/
-#define RING_BUFFER_SIZE 1024
-typedef struct {
-    uint8_t buffer[RING_BUFFER_SIZE];
-    uint16_t readIndex;
-    uint16_t writeIndex;
-}RingBuffer;
-
 /* 宏定义 --------------------------------------------------------------------*/
+#define RING_BUFFER_SIZE 1024
 
-/* 扩展变量 ------------------------------------------------------------------*/
+/* 类型定义 ------------------------------------------------------------------*/
+/**
+* @brief 环形缓冲区结构体
+*/
+typedef struct {
+    uint8_t buffer[RING_BUFFER_SIZE];  /* 缓冲区数组 */
+    uint16_t read_index;               /* 读索引 */
+    uint16_t write_index;              /* 写索引 */
+} RING_BUFFER;
 
 /* 函数声明 ------------------------------------------------------------------*/
-
-uint16_t RBuffer_GetLength(const RingBuffer* buffer);
-uint16_t RBuffer_Put(RingBuffer* buffer, const uint8_t *data, uint8_t length);
-uint16_t RBuffer_GetWithHT(RingBuffer* buffer, uint8_t *message, const char* head, const char* tail);
-uint16_t RBuffer_GetWithHLen(RingBuffer* buffer, uint8_t *message, const char* head, const uint16_t len);
-uint16_t RBuffer_GetWithLen(RingBuffer* buffer, uint8_t *message, const uint16_t len);
-uint16_t RBuffer_GetWithH(RingBuffer* buffer, uint8_t *message, const char* head);
-uint16_t RBuffer_GetWithT(RingBuffer* buffer, uint8_t *message, const char* tail);
-
+uint16_t RingBuffer_GetLength(const RING_BUFFER *buffer);
+uint16_t RingBuffer_Put(RING_BUFFER *buffer, const uint8_t *data, uint16_t length);
+uint16_t RingBuffer_GetWithHT(RING_BUFFER *buffer, uint8_t *message, const char *head, const char *tail);
+uint16_t RingBuffer_GetWithHLen(RING_BUFFER *buffer, uint8_t *message, const char *head, uint16_t len);
+uint16_t RingBuffer_GetWithLen(RING_BUFFER *buffer, uint8_t *message, uint16_t len);
+uint16_t RingBuffer_GetWithH(RING_BUFFER *buffer, uint8_t *message, const char *head);
 
 #endif //__USER_RING_BUFFER_H__

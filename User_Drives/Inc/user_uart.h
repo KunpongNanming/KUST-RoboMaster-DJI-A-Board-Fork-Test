@@ -8,26 +8,37 @@
 #include "../../User_Architect/Inc/user_ring_buffe.h"
 
 /* 类型定义 ------------------------------------------------------------------*/
-enum UART_Status {
-    UART_IDLE = 0,
-    UART_SENDING = 1,
-};
 
-typedef void (*UART_Callback)(void*);
+/**
+* @brief UART 接收回调函数类型
+* @param user_uart UART 驱动结构体指针
+*/
+typedef void (*UART_Callback)(void* user_uart);
 
-typedef struct  {
-    UART_HandleTypeDef* huart;
-    enum UART_Status status;
-    uint8_t is_buffer_a;
-    uint8_t rx_buffer_a[UART_BUFFER_SIZE];
-    uint8_t rx_buffer_b[UART_BUFFER_SIZE];
-    RingBuffer rx_ringBuffer;
-    Queue tx_queue;
-    UART_Callback callback;
+/**
+* @brief UART 状态
+*/
+typedef enum {
+    UART_IDLE,     /* 空闲状态 */
+    UART_SENDING,  /* 发送中 */
+} UART_Status;
+
+/**
+* @brief UART 驱动结构体
+*/
+typedef struct {
+    UART_HandleTypeDef* huart;                /* UART 硬件句柄 */
+    UART_Status status;                       /* UART 状态 */
+    uint8_t is_buffer_a;                      /* 当前使用缓冲区是否是 A 标志 */
+    uint8_t rx_buffer_a[UART_BUFFER_SIZE];    /* 接收缓冲区 A */
+    uint8_t rx_buffer_b[UART_BUFFER_SIZE];    /* 接收缓冲区 B */
+    RING_BUFFER rx_ringBuffer;                /* 接收环形缓冲区 */
+    Queue tx_queue;                           /* 发送队列 */
+    UART_Callback callback;                   /* 接收回调函数 */
 } UART_DRIVES;
 
 /* 函数声明 ------------------------------------------------------------------*/
-void UART_Init(UART_DRIVES* user_uart,UART_HandleTypeDef* huart, const UART_Callback callback);
+void UART_Init(UART_DRIVES* user_uart, UART_HandleTypeDef* huart, UART_Callback callback);
 void UART_QSend(UART_DRIVES* user_uart, const char* str);
 
 #endif //__USER_UART_H__

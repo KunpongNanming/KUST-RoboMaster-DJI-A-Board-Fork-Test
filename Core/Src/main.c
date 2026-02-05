@@ -111,8 +111,7 @@ int main(void)
   MX_TIM14_Init();
   MX_CAN2_Init();
   /* USER CODE BEGIN 2 */
-  LED_Init(&red_led, LED_RED_GPIO_Port, LED_RED_Pin, 1);
-  LED_Init(&green_led, LED_GREEN_GPIO_Port, LED_GREEN_Pin, 1);
+
 
   /* USER CODE END 2 */
 

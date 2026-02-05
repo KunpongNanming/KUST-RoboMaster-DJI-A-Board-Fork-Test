@@ -1,6 +1,7 @@
 /.kiro/
-/.idea/
-/.settings/
 /.vscode/
-/build/
-/cmake-build-debug/
+
+#/.idea/
+#/.settings/
+#/build/
+#/cmake-build-debug/

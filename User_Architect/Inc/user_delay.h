@@ -9,9 +9,11 @@
 extern uint32_t TimeFlag;
 
 /* 函数声明 ------------------------------------------------------------------*/
-void delay_init(const TIM_HandleTypeDef *htim);
-void delay_us(const uint32_t us);
-void delay_ms(const uint32_t ms);
-void delay_s(const uint32_t s);
+void Delay_Init(const TIM_HandleTypeDef *htim);
+void Delay_Update_TimeFlag(void);
+void Delay_us(uint32_t us);
+void Delay_ms(uint32_t ms);
+void Delay_s (uint32_t s);
+
 
 #endif //__USER_DELAY_H__
