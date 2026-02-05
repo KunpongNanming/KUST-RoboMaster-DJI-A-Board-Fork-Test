@@ -21,19 +21,13 @@
 │   ├── user_queue.c/h       # 无锁队列
 │   └── user_ring_buffe.c/h  # 环形缓冲区
 └── User_Drives/             # 驱动层
-    ├── user_can.c/h         # CAN 通信
-    ├── user_dji_bus.c/h     # DJI 总线协议
-    ├── user_dji_motor.c/h   # DJI 电机驱动
+    ├── user_can.c/h         # CAN 总线
+    ├── user_dji_bus.c/h     # DBUS 协议
+    ├── user_dji_motor.c/h   # 大疆电机驱动
     ├── user_led.c/h         # LED 控制
     ├── user_pwm.c/h         # PWM 输出
     └── user_uart.c/h        # UART 通信
 ```
-
-## 主要功能
-
-- **舵轮底盘运动学**: 支持全向移动
-- **DJI 电机控制**: 通过 CAN 总线控制驱动轮和转向轮
-- **PID 闭环控制**: 速度和位置控制
 
 ## 许可证
 
