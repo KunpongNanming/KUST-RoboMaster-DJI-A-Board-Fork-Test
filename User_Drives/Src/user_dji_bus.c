@@ -12,15 +12,15 @@ static uint8_t dbus_buf[DBUS_BUF_LEN];
 * @brief 遥控器数据解析函数
 */
 static void rc_callback_handler(void) {
-    dbus_drive->ch0  = ((dbus_buf[0]  >> 0 | dbus_buf[1]  << 8) & 0x07FF) - 1024;
-    dbus_drive->ch1  = ((dbus_buf[1]  >> 3 | dbus_buf[2]  << 5) & 0x07FF) - 1024;
-    dbus_drive->ch2  = ((dbus_buf[2]  >> 6 | dbus_buf[3]  << 2  | dbus_buf[4] << 10) & 0x07FF) - 1024;
-    dbus_drive->ch3  = ((dbus_buf[4]  >> 1 | dbus_buf[5]  << 7) & 0x07FF) - 1024;
+    dbus_drive->ch0  = (int16_t)(((dbus_buf[0]  >> 0 | dbus_buf[1]  << 8) & 0x07FF) - 1024);
+    dbus_drive->ch1  = (int16_t)(((dbus_buf[1]  >> 3 | dbus_buf[2]  << 5) & 0x07FF) - 1024);
+    dbus_drive->ch2  = (int16_t)(((dbus_buf[2]  >> 6 | dbus_buf[3]  << 2  | dbus_buf[4] << 10) & 0x07FF) - 1024);
+    dbus_drive->ch3  = (int16_t)(((dbus_buf[4]  >> 1 | dbus_buf[5]  << 7) & 0x07FF) - 1024);
 
-    dbus_drive->roll = ((dbus_buf[16] >> 0 | dbus_buf[17] << 8) & 0x07FF) - 1024;
+    dbus_drive->roll = (int16_t)(((dbus_buf[16] >> 0 | dbus_buf[17] << 8) & 0x07FF) - 1024);
 
     dbus_drive->sw1  = ((dbus_buf[5] >> 4) & 0x000C) >> 2;
-    dbus_drive->sw2  =  (dbus_buf[5] >> 4) & 0x0003;
+    dbus_drive->sw2  = ((dbus_buf[5] >> 4) & 0x0003) >> 0;
 
     dbus_drive->is_update = 1;
 }

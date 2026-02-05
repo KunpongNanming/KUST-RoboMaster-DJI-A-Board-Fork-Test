@@ -118,7 +118,7 @@ void DJI_Motor_Init(DJI_MOTOR_DRIVES* motor, CAN_DRIVES* can_drive, uint8_t id,
 * @param can_drive CAN 总线驱动结构体指针
 * @note  需要在相应的 CAN 总线接收回调函数中调用
 */
-void DJI_Motor_Handle(CAN_DRIVES* can_drive) {
+void DJI_Motor_Handle(const CAN_DRIVES* can_drive) {
     for (uint8_t motor_index = 0; motor_index < motor_num; motor_index++) {
         DJI_MOTOR_DRIVES *motor = motor_drives[motor_index];
 
@@ -155,7 +155,7 @@ void DJI_Motor_Handle(CAN_DRIVES* can_drive) {
 * @param can_drive CAN 总线驱动结构体指针
 * @note  将所有电机控制指令一并打包发送
 */
-void DJI_Motor_Execute(CAN_DRIVES* can_drive) {
+void DJI_Motor_Execute(const CAN_DRIVES* can_drive) {
     uint8_t GM6020_control_id_1_frame[8] = {0};
     uint8_t GM6020_control_id_2_frame[8] = {0};
     uint8_t C6x0_control_id_1_frame[8] = {0};

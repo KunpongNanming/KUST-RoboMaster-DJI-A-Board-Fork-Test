@@ -77,7 +77,7 @@ void DJI_Motor_Init(DJI_MOTOR_DRIVES *motor, CAN_DRIVES* can_drive, uint8_t id,
 
 
 void DJI_Motor_SetTarget(DJI_MOTOR_DRIVES *motor, float target);
-void DJI_Motor_Handle(CAN_DRIVES* can_drive);
-void DJI_Motor_Execute(CAN_DRIVES* can_drive);
+void DJI_Motor_Handle(const CAN_DRIVES* can_drive);
+void DJI_Motor_Execute(const CAN_DRIVES* can_drive);
 
 #endif //__USER_DJI_MOTOR_H__
