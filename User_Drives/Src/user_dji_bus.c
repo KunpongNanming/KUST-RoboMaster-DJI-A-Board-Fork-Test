@@ -30,7 +30,7 @@ static void rc_callback_handler(void) {
 * @param huart UART 句柄指针
 * @note  在空闲中断中处理接收到的数据帧
 */
-static void dbus_rx_idle_callback(UART_HandleTypeDef* huart) {
+static void dbus_rx_idle_callback(const UART_HandleTypeDef* huart) {
     /* 清除空闲中断标志位 */
     __HAL_UART_CLEAR_IDLEFLAG(huart);
 
@@ -82,7 +82,7 @@ void DBUS_Init(DBUS_DRIVES* dbus, UART_HandleTypeDef* huart) {
 * @param huart UART 句柄指针
 * @note  需要在相应的 UART 中断回调函数中调用
 */
-void DBUS_Receive_Handler(UART_HandleTypeDef* huart) {
+void DBUS_Receive_Handler(const UART_HandleTypeDef* huart) {
     if (__HAL_UART_GET_FLAG(huart, UART_FLAG_IDLE) &&
         __HAL_UART_GET_IT_SOURCE(huart, UART_IT_IDLE)) {
         dbus_rx_idle_callback(huart);

@@ -26,6 +26,6 @@ typedef struct {
 
 /* 函数声明 ------------------------------------------------------------------*/
 void DBUS_Init(DBUS_DRIVES* dbus, UART_HandleTypeDef* huart);
-void DBUS_Receive_Handler(UART_HandleTypeDef* huart);
+void DBUS_Receive_Handler(const UART_HandleTypeDef* huart);
 
 #endif //__USER_DJI_BUS_H__
